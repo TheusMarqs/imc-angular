@@ -1,0 +1,9 @@
+<select name="sexo" [(ngModel)]="genero">
+  <option value="h">Homem</option>
+  <option value="m">Mulher</option>
+</select>
+
+<input type="number" name="peso" [(ngModel)]="peso">
+<input type="number" name="altura" [(ngModel)]="altura">
+<button type="button" name="btn" (click)="calcularImc()">Calcular</button>
+<input type="text" name="resultado" disabled [(ngModel)]="resultado">
