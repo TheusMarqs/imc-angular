@@ -17,7 +17,7 @@ export class ImcComponent {
 
 
   calcularImc() {
-    const alturaFinal = this.altura *= this.altura;
+    const alturaFinal = this.altura * this.altura;
     const resultado_conta = (this.peso / alturaFinal) * 10000;
 
     if (this.genero == 'h') {
@@ -29,11 +29,14 @@ export class ImcComponent {
         this.msg = "Obesidade leve";
       } else if (resultado_conta < 40) {
         this.msg = "Obesidade moderada";
-      } else {
+      } else if (resultado_conta >= 40){
         this.msg = "Obesidade mórbida";
+      } else {
+        this.msg = "Por favor, complete os campos necessários";
       }
     }
-    else {
+
+    else if (this.genero == 'm'){
       if (resultado_conta < 19) {
         this.msg = "Abaixo do normal";
       } else if (resultado_conta < 24) {
@@ -42,12 +45,18 @@ export class ImcComponent {
         this.msg = "Obesidade leve";
       } else if (resultado_conta < 39) {
         this.msg = "Obesidade moderada";
-      } else {
+      } else if (resultado_conta >= 39) {
         this.msg = "Obesidade mórbida";
+      } else {
+        this.msg = "Por favor, complete os campos necessários";
       }
     }
 
-    this.resultado = this.msg + resultado_conta;
+    else {
+      this.msg = "Por favor, selecione seu gênero";
+    }
+
+    this.resultado = this.msg + "\n" + resultado_conta.toFixed(2);
   }
 
 
